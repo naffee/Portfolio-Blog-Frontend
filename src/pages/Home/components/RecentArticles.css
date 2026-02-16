@@ -1,0 +1,137 @@
+.recent-articles-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recent-articles-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.recent-articles-section h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.view-all-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.view-all-link:hover {
+    gap: 12px;
+    color: #60a5fa;
+}
+
+.recent-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .recent-articles-section .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .recent-articles-section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Scoped Blog Card Styles for Recent Articles Grid */
+.recent-articles-grid .blog-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove default list styling */
+.recent-articles-grid .blog-card:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Match others */
+}
+
+/* Hover Effects */
+.recent-articles-grid .blog-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.recent-articles-grid .blog-card-image {
+    display: none;
+}
+
+.recent-articles-grid .blog-card {
+    /* Ensure layout remains vertical/normal for recent articles */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Internal overrides */
+.recent-articles-grid .blog-meta {
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+}
+
+.recent-articles-grid .blog-title {
+    font-size: 1.4rem;
+    /* Slightly smaller for cards */
+    margin-bottom: 1rem;
+}
+
+.recent-articles-grid .blog-excerpt {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+    /* Push link to bottom */
+}
+
+.recent-articles-grid .read-article-link {
+    margin-top: auto;
+}
+
+/* Decorative gradient glow on hover */
+.recent-articles-grid .blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recent-articles-grid .blog-card:hover::before {
+    opacity: 1;
+}

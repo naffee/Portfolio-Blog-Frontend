@@ -1,0 +1,214 @@
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.blog-main {
+    flex: 1;
+    padding-top: 8rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    padding-bottom: 4rem;
+}
+
+.blog-header {
+    margin-bottom: 4rem;
+}
+
+.blog-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.blog-header .highlight {
+    color: var(--accent-blue);
+}
+
+.blog-intro {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 2rem;
+}
+
+
+
+.blog-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 400px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.search-input:focus {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tag-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: var(--text-muted);
+    /* Darker text for tags */
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tag-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+}
+
+.tag-btn.active {
+    background: var(--accent-blue);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.4);
+}
+
+.no-results {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-secondary);
+}
+
+.reset-btn {
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-btn:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.blog-list-skeleton {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.blog-list {
+    display: grid;
+    margin-bottom: 4rem;
+}
+
+.blog-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.load-more-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-secondary);
+    padding: 0.8rem 2rem;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.load-more-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+@media (max-width: 768px) {
+    .blog-main {
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+    }
+
+    .blog-header {
+        margin-bottom: 2rem;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .blog-intro {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-controls {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-input {
+        font-size: 0.95rem;
+    }
+
+    .blog-list {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .blog-list-skeleton {
+        grid-template-columns: 1fr;
+    }
+}

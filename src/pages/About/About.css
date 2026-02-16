@@ -1,0 +1,253 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.about-main {
+    flex: 1;
+    padding-top: 8rem;
+    max-width: 800px;
+    /* Narrower reading width as per design */
+    margin: 0 auto;
+    width: 100%;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    padding-bottom: 4rem;
+}
+
+/* Header */
+.about-header {
+    margin-bottom: 4rem;
+}
+
+.about-header .badge {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3em 0.8em;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.about-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.about-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    line-height: 1.5;
+}
+
+.about-subtitle .highlight {
+    color: var(--accent-blue);
+}
+
+.about-intro-text p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* Philosophy Card */
+.philosophy-section {
+    margin-bottom: 4rem;
+}
+
+.philosophy-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 4px;
+}
+
+.philosophy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
+}
+
+.philosophy-header .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.philosophy-card blockquote {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: white;
+    margin: 0;
+}
+
+/* Profile Visual - expanding standard code window styles */
+.profile-visual-section {
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Usage of .code-window class from Hero.css, relying on global availability or copy styles */
+/* duplicating key styles here to ensure self-contained */
+
+.profile-visual-section .code-window {
+    background: #0f121a;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    font-family: 'Fira Code', 'Roboto Mono', monospace;
+    overflow: hidden;
+}
+
+.profile-visual-section .window-header {
+    background: #1a202c;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #1f2937;
+}
+
+.profile-visual-section .window-body {
+    padding: 1.5rem;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Skills */
+.skills-section {
+    margin-bottom: 6rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.skill-column h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--accent-blue);
+    padding-left: 0.75rem;
+}
+
+.skill-column ul {
+    list-style: none;
+}
+
+.skill-column li {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.skill-column .num {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-right: 0.75rem;
+}
+
+/* Journey */
+.journey-section {
+    margin-bottom: 6rem;
+}
+
+.section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 0.4rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px var(--bg-primary);
+    /* mask line */
+}
+
+.timeline-date {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: white;
+}
+
+.timeline-item p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* CTA */
+.about-cta {
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 4rem;
+}
+
+.about-cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.about-cta p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}

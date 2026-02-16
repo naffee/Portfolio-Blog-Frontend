@@ -1,0 +1,96 @@
+.featured-projects {
+    padding: 6rem 0;
+    background-color: var(--bg-primary);
+}
+
+.projects-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-header-row h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.section-sub {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+}
+
+/* Scoped overrides for ProjectCard within Featured Section */
+.featured-projects .project-grid-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+}
+
+/* Reduced size as requested */
+.featured-projects .project-grid-image {
+    height: 160px;
+    /* Smaller image height (default is 200px) */
+}
+
+.featured-projects .project-grid-content {
+    padding: 1.25rem;
+    /* Slightly less padding */
+}
+
+.featured-projects .project-header h3 {
+    font-size: 1.1rem;
+    /* Smaller title */
+}
+
+.featured-projects .project-description {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Enhanced Hover */
+.featured-projects .project-grid-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.featured-projects .project-grid-card:hover .project-grid-image img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+@media (max-width: 640px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
