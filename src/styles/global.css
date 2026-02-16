@@ -22,6 +22,12 @@
   --max-width: 1200px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
