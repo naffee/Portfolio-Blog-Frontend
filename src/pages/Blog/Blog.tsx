@@ -3,7 +3,7 @@ import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import BlogCard from './BlogCard';
 import type { WPPost } from '../../types/wordpress';
-import { getPosts } from '../../services/wordpress';
+import { getBlogPosts } from '../../services/wordpress';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
 import SEO from '../../components/shared/SEO';
@@ -18,12 +18,12 @@ const Blog: React.FC = () => {
     const [filter, setFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 2; // Temporary low limit for testing
+    const postsPerPage = 6; // Increased from 2 for better default view
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const data = await getPosts(1, 100); // Fetch more to allow client-side filtering
+                const data = await getBlogPosts(1, 100); // Fetch "Blog" category posts only
                 setPosts(data);
             } catch {
                 setError('Failed to load posts.');
@@ -40,12 +40,17 @@ const Blog: React.FC = () => {
         setCurrentPage(1);
     }, [filter, searchQuery]);
 
-    // Filter Categories (Dynamic)
+    // Filter Categories (Dynamic) - Exclude "Blog" and "Uncategorized"
     const allTags = posts.flatMap(post => {
         const terms = post._embedded?.['wp:term']?.flat() || [];
         return terms.map(t => t.name);
     });
-    const uniqueTags = Array.from(new Set(allTags)).sort();
+
+    // Filter out "Blog" and "Uncategorized" and duplicates
+    const uniqueTags = Array.from(new Set(allTags))
+        .filter(tag => tag.toLowerCase() !== 'blog' && tag.toLowerCase() !== 'uncategorized')
+        .sort();
+
     const categories = ['All', ...uniqueTags];
 
     // Filter Logic

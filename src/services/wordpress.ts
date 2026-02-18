@@ -103,3 +103,26 @@ export const getComments = async (postId: number): Promise<WPComment[]> => {
         return [];
     }
 };
+
+export const getBlogPosts = async (page = 1, perPage = 10): Promise<WPPost[]> => {
+    try {
+        // First, find the 'Blog' category ID
+        const categories = await getCategories();
+        const blogCategory = categories.find(cat => cat.name.toLowerCase() === 'blog' || cat.slug === 'blog');
+
+        if (!blogCategory) {
+            console.warn('Blog category not found');
+            return [];
+        }
+
+        // Fetch posts in that category
+        const response = await fetch(`${WP_API_URL}/posts?_embed&categories=${blogCategory.id}&page=${page}&per_page=${perPage}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch blog posts');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        return [];
+    }
+};
