@@ -9,16 +9,13 @@ export const mapPostToProject = (post: WPPost): Project => {
     const tagNames = allTerms.map(t => t.name);
 
     // 2. Determine Category
-    let category = 'Software Development';
+    // Prefer actual WP Categories (excluding 'Portfolio' and 'Uncategorized')
+    const categories = tagNames.filter(t =>
+        t.toLowerCase() !== 'portfolio' &&
+        t.toLowerCase() !== 'uncategorized'
+    );
 
-    // Check for specific tags that map to our Portfolio Categories
-    if (tagNames.some(t => t.toLowerCase().includes('writing') || t.toLowerCase() === 'technical writing')) {
-        category = 'Writing';
-    } else if (tagNames.some(t => t.toLowerCase().includes('api') || t.toLowerCase() === 'api design')) {
-        category = 'API';
-    } else if (tagNames.some(t => t.toLowerCase() === 'infra' || t.toLowerCase() === 'devops')) {
-        category = 'Infra';
-    }
+    let category = categories.length > 0 ? categories[0] : 'Software Development';
 
     // 3. Extract Links
     const links = [

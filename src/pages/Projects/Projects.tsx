@@ -2,64 +2,65 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
-import { projects } from './data';
 import type { Project } from './data';
 import ProjectCard from './ProjectCard';
-import { getPortfolioPosts } from '../../services/wordpress';
+import { getPortfolioPosts, getSubcategories } from '../../services/wordpress';
 import { mapPostToProject } from '../../utils/projectMapper'; // Import mapper
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../../components/shared/SEO';
 import Pagination from '../../components/shared/Pagination';
+import SkeletonLoader from '../../components/shared/SkeletonLoader';
 import './Projects.css';
 
 const Projects: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const filter = searchParams.get('category') || 'All';
-    const categories = ['All', 'Software Development', 'Technical Writing', 'API Design'];
 
-    // State for dynamic projects
+    // State for dynamic projects and categories
     const [dynamicProjects, setDynamicProjects] = React.useState<Project[]>([]);
+    const [categories, setCategories] = React.useState<string[]>([]);
     const [loading, setLoading] = React.useState(true);
     const [currentPage, setCurrentPage] = React.useState(1);
-    const itemsPerPage = 2; // Temporary low limit for testing
+    const itemsPerPage = 6;
 
     React.useEffect(() => {
-        const fetchProjects = async () => {
+        const fetchData = async () => {
             try {
-                const wpPosts = await getPortfolioPosts();
+                // Fetch posts AND subcategories for Portfolio
+                const [wpPosts, subCats] = await Promise.all([
+                    getPortfolioPosts(),
+                    getSubcategories('portfolio')
+                ]);
 
-                // Map WP posts using the shared utility
+                // Map WP posts
                 const mappedProjects: Project[] = wpPosts.map(mapPostToProject);
 
-                // If no dynamic projects yet, fallback to static for demo?
-                // The user said "I have added the Portfolio", so we should show what they added.
-                // But we might want to blend them or replace them.
-                // "Let's do something similar... I want to be able to add..."
-                // Implies ADDING to existing or replacing.
-                // Let's COMBINE for now, or just use dynamic if available.
-                // User expects to see THEIR added portfolio.
-
+                // Set Projects
                 if (mappedProjects.length > 0) {
                     setDynamicProjects(mappedProjects);
                 } else {
-                    // Fallback to static if fetch fails or empty, so page isn't broken
-                    setDynamicProjects(projects);
+                    setDynamicProjects([]); // No projects found
                 }
 
+                // Set Categories (Dynamic subcategories)
+                if (subCats.length > 0) {
+                    const catNames = subCats.map(c => c.name).sort();
+                    setCategories(catNames);
+                }
             } catch (err) {
                 console.error("Failed to load portfolio", err);
-                setDynamicProjects(projects); // Fallback
+                // setDynamicProjects([]); // Already empty by default
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchProjects();
+        fetchData();
     }, []);
 
     const handleFilterChange = (newFilter: string) => {
-        if (newFilter === 'All') {
-            setSearchParams({});
+        if (filter === newFilter) {
+            setSearchParams({}); // Toggle off
         } else {
             setSearchParams({ category: newFilter });
         }
@@ -73,10 +74,8 @@ const Projects: React.FC = () => {
     const filteredProjects = filter === 'All'
         ? dynamicProjects
         : dynamicProjects.filter(p => {
-            // ... existing filter logic ...
-            if (filter === 'Technical Writing') return p.category === 'Writing';
-            if (filter === 'API Design') return p.tags?.includes('API') || p.tags?.includes('OpenAPI') || p.category === 'API';
-            if (filter === 'Software Development') return p.category === 'Software Development' || p.category === 'Backend';
+            // Check if project category matches filter (exact match for custom WP subcats)
+            // Or if it's in the tags
             return p.category === filter || p.tags?.includes(filter);
         });
 
@@ -121,7 +120,7 @@ const Projects: React.FC = () => {
                                 className={`filter-btn ${filter === cat ? 'active' : ''}`}
                                 onClick={() => handleFilterChange(cat)}
                             >
-                                {cat === 'All' ? 'All Work' : cat}
+                                {cat}
                             </button>
                         ))}
                     </div>
@@ -129,9 +128,9 @@ const Projects: React.FC = () => {
 
                 {loading ? (
                     <div style={{ textAlign: 'center', padding: '4rem', color: '#888' }}>
-                        Loading portfolio...
+                        <SkeletonLoader type="card" repeat={3} className="projects-grid-layout" />
                     </div>
-                ) : (
+                ) : filteredProjects.length > 0 ? (
                     <>
                         <motion.div
                             layout
@@ -161,6 +160,11 @@ const Projects: React.FC = () => {
                             />
                         )}
                     </>
+                ) : (
+                    <div className="no-results" style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem 0', color: '#888' }}>
+                        <h3>No projects found</h3>
+                        <p>Try selecting a different category or check back later.</p>
+                    </div>
                 )}
             </main>
             <Footer />

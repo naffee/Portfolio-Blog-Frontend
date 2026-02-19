@@ -3,7 +3,7 @@ import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import BlogCard from './BlogCard';
 import type { WPPost } from '../../types/wordpress';
-import { getBlogPosts } from '../../services/wordpress';
+import { getBlogPosts, getSubcategories } from '../../services/wordpress';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
 import SEO from '../../components/shared/SEO';
@@ -13,26 +13,32 @@ import './Blog.css';
 
 const Blog: React.FC = () => {
     const [posts, setPosts] = useState<WPPost[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [filter, setFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 6; // Increased from 2 for better default view
+    const postsPerPage = 6;
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchData = async () => {
             try {
-                const data = await getBlogPosts(1, 100); // Fetch "Blog" category posts only
-                setPosts(data);
+                const [postsData, subcatsData] = await Promise.all([
+                    getBlogPosts(1, 100),
+                    getSubcategories('blog')
+                ]);
+
+                setPosts(postsData);
+                setCategories(subcatsData.map(cat => cat.name).sort());
             } catch {
-                setError('Failed to load posts.');
+                setError('Failed to load content.');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchPosts();
+        fetchData();
     }, []);
 
     // Reset page on filter/search change
@@ -40,22 +46,9 @@ const Blog: React.FC = () => {
         setCurrentPage(1);
     }, [filter, searchQuery]);
 
-    // Filter Categories (Dynamic) - Exclude "Blog" and "Uncategorized"
-    const allTags = posts.flatMap(post => {
-        const terms = post._embedded?.['wp:term']?.flat() || [];
-        return terms.map(t => t.name);
-    });
-
-    // Filter out "Blog" and "Uncategorized" and duplicates
-    const uniqueTags = Array.from(new Set(allTags))
-        .filter(tag => tag.toLowerCase() !== 'blog' && tag.toLowerCase() !== 'uncategorized')
-        .sort();
-
-    const categories = ['All', ...uniqueTags];
-
     // Filter Logic
     const filteredPosts = posts.filter(post => {
-        // 1. Category Filter
+        // 1. Category Filter (Subcategory check)
         const terms = post._embedded?.['wp:term']?.flat() || [];
         const termNames = terms.map(t => t.name.toLowerCase());
         const matchesCategory = filter === 'All'
@@ -120,7 +113,7 @@ const Blog: React.FC = () => {
                                 <button
                                     key={cat}
                                     className={`tag-btn ${filter === cat ? 'active' : ''}`}
-                                    onClick={() => setFilter(cat)}
+                                    onClick={() => setFilter(filter === cat ? 'All' : cat)}
                                 >
                                     {cat}
                                 </button>

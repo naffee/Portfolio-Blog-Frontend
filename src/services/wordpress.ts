@@ -41,15 +41,38 @@ export interface WPCategory {
     meta: unknown[];
 }
 
-export const getCategories = async (): Promise<WPCategory[]> => {
+export const getCategories = async (parentId?: number): Promise<WPCategory[]> => {
     try {
-        const response = await fetch(`${WP_API_URL}/categories`);
+        const url = parentId
+            ? `${WP_API_URL}/categories?parent=${parentId}`
+            : `${WP_API_URL}/categories`;
+
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error('Failed to fetch categories');
         }
         return await response.json();
     } catch (error) {
         console.error('Error fetching categories:', error);
+        return [];
+    }
+};
+
+export const getSubcategories = async (parentSlug: string): Promise<WPCategory[]> => {
+    try {
+        // 1. Get the parent category
+        const allCategories = await getCategories();
+        const parentPkg = allCategories.find(c => c.slug === parentSlug || c.name.toLowerCase() === parentSlug.toLowerCase());
+
+        if (!parentPkg) {
+            console.warn(`Parent category "${parentSlug}" not found.`);
+            return [];
+        }
+
+        // 2. Fetch subcategories
+        return await getCategories(parentPkg.id);
+    } catch (error) {
+        console.error(`Error fetching subcategories for ${parentSlug}:`, error);
         return [];
     }
 };

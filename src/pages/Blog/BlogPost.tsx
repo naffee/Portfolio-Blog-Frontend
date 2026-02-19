@@ -7,7 +7,7 @@ import type { WPPost } from '../../types/wordpress';
 import { ArrowLeft, Calendar, Linkedin, Twitter, Link as LinkIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEO from '../../components/shared/SEO';
-import CommentsSection from './components/CommentsSection';
+
 import SkeletonLoader from '../../components/shared/SkeletonLoader';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css'; // Dark theme
@@ -198,7 +198,7 @@ const BlogPost: React.FC = () => {
                     </div>
                 )}
 
-                <CommentsSection postId={post.id} />
+
             </motion.main>
             <Footer />
         </div>
