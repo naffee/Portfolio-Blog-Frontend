@@ -1,6 +1,6 @@
 import type { WPPost, WPComment } from '../types/wordpress';
 
-const WP_API_URL = 'http://wordpress-oswkcckcokc4o40ss8ssco8g.16.16.27.94.sslip.io/wp-json/wp/v2';
+const WP_API_URL = '/api/wp';
 
 export const getPosts = async (page = 1, perPage = 10): Promise<WPPost[]> => {
     try {
