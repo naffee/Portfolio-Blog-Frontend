@@ -11,6 +11,7 @@ export interface Project {
         icon?: string;
     }[];
     featured: boolean;
+    slug?: string;
 }
 
 export const projects: Project[] = [
@@ -25,7 +26,8 @@ export const projects: Project[] = [
             { label: 'GitHub', url: '#' },
             { label: 'Demo', url: '#' }
         ],
-        featured: true
+        featured: true,
+        slug: 'scalable-api-gateway'
     },
     {
         id: '2',
@@ -37,7 +39,8 @@ export const projects: Project[] = [
         links: [
             { label: 'Read Guide', url: '#' }
         ],
-        featured: true
+        featured: true,
+        slug: 'microservices-architecture-guide'
     },
     {
         id: '3',
@@ -50,7 +53,8 @@ export const projects: Project[] = [
             { label: 'GitHub', url: '#' },
             { label: 'Metrics', url: '#' }
         ],
-        featured: true
+        featured: true,
+        slug: 'real-time-data-processor'
     },
     {
         id: '4',
@@ -62,7 +66,8 @@ export const projects: Project[] = [
         links: [
             { label: 'Documentation', url: '#' }
         ],
-        featured: false
+        featured: false,
+        slug: 'api-documentation-standard'
     },
     {
         id: '5',
@@ -74,7 +79,8 @@ export const projects: Project[] = [
         links: [
             { label: 'GitHub', url: '#' }
         ],
-        featured: false
+        featured: false,
+        slug: 'auth-service-microkernel'
     },
     {
         id: '6',
@@ -86,6 +92,7 @@ export const projects: Project[] = [
         links: [
             { label: 'View Scripts', url: '#' }
         ],
-        featured: false
+        featured: false,
+        slug: 'serverless-data-ingest'
     }
 ];

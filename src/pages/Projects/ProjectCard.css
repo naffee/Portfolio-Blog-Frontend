@@ -135,3 +135,13 @@
 .project-link:hover {
     color: var(--accent-blue-hover);
 }
+
+.project-title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.project-title-link:hover {
+    color: var(--accent-blue);
+}

@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './pages/Home/Home';
 import Projects from './pages/Projects/Projects';
+import ProjectPost from './pages/Projects/ProjectPost';
 import Blog from './pages/Blog/Blog';
 import BlogPost from './pages/Blog/BlogPost';
 import About from './pages/About/About';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/portfolio" element={<Projects />} />
+              <Route path="/portfolio/:slug" element={<ProjectPost />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/about" element={<About />} />

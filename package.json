@@ -14,6 +14,7 @@
     "framer-motion": "^12.34.0",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.563.0",
+    "marked": "^18.0.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet-async": "^2.0.5",

@@ -28,14 +28,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
     return (
         <div className="project-grid-card">
-            <div className="project-grid-image">
+            <Link to={project.slug ? `/portfolio/${project.slug}` : '#'} className="project-grid-image">
                 <img src={project.imageUrl} alt={project.title} />
                 <div className="project-grid-overlay"></div>
-            </div>
+            </Link>
 
             <div className="project-grid-content">
                 <div className="project-header">
-                    <h3>{project.title}</h3>
+                    <Link to={project.slug ? `/portfolio/${project.slug}` : '#'} className="project-title-link">
+                        <h3>{project.title}</h3>
+                    </Link>
                     <span className={`category-badge ${project.category.toLowerCase().replace(/\s+/g, '-')}`}>{project.category}</span>
                 </div>
 

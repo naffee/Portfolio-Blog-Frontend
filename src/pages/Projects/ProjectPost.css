@@ -1,0 +1,230 @@
+.project-post-container {
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.project-post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 120px 20px 60px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--accent-blue);
+}
+
+.project-header-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 30px;
+}
+
+.project-header-section h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.project-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.project-date-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.project-action-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.project-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.project-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #0070f3; /* Slight hover adjustments */
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-featured-img {
+    margin-bottom: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-featured-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-body {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #d1d5db;
+}
+
+.project-body p {
+    margin-bottom: 1.5em;
+}
+
+.project-body h2 {
+    font-size: 1.8rem;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    color: var(--text-primary);
+}
+
+.project-body h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    color: var(--text-primary);
+}
+
+.project-body ul,
+.project-body ol {
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+}
+
+.project-body li {
+    margin-bottom: 0.5em;
+}
+
+.project-body code {
+    font-family: 'Fira Code', 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+.project-body pre {
+    position: relative;
+    border-radius: 8px;
+    background: #282c34 !important;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-body pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    line-height: 1.6;
+}
+
+/* Related Projects Section */
+.related-projects-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.related-projects-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.related-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.related-project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+}
+
+.related-project-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.related-project-image {
+    height: 160px;
+    overflow: hidden;
+}
+
+.related-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.related-project-card:hover .related-project-image img {
+    transform: scale(1.05);
+}
+
+.related-project-content {
+    padding: 1.2rem;
+}
+
+.related-project-content h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}

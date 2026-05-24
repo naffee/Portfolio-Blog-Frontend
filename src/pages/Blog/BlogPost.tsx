@@ -21,6 +21,7 @@ const BlogPost: React.FC = () => {
     const [relatedPosts, setRelatedPosts] = useState<WPPost[]>([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchPostData = async () => {
             if (slug) {
                 const data = await getPostBySlug(slug);
@@ -156,6 +157,12 @@ const BlogPost: React.FC = () => {
                         </span>
                     </div>
                 </header>
+
+                {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                    <div className="post-featured-image">
+                        <img src={post._embedded['wp:featuredmedia'][0].source_url} alt={post.title.rendered} />
+                    </div>
+                )}
 
                 <article
                     className="post-body"
