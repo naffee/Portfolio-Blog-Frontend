@@ -25,21 +25,18 @@ const About: React.FC = () => {
                     <div className="badge">AVAILABLE FOR PROJECTS</div>
                     <h1>Nafisat Damisa</h1>
                     <p className="about-subtitle">
-                        <span className="highlight">Software Developer Who Writes</span>
+                        <span className="highlight">Technical Writer Who Codes</span>
                     </p>
 
                     <div className="about-intro-text">
                         <p>
-                            Hi, I'm Nafisat. I am a backend-focused software developer who enjoys building systems and writing about how they work.
+                            Hi, I'm Nafisat. I am a Technical Writer with a strong background in backend engineering. I specialize in translating complex system architectures, APIs, and backend patterns into practical, easy-to-follow documentation.
                         </p>
                         <p>
-                            I work primarily with JavaScript and TypeScript, designing APIs, backend services, and database-driven applications. My development experience is rooted in startup environments, where I have contributed to financial systems, notification architectures, third-party integrations, and scalable backend logic.
+                            Because I've built these systems myself—working with Node.js, REST APIs, and database-driven applications—I know exactly what developers need to see in the docs. I can read the source code, interview engineers on their level, and produce guides that drastically reduce time-to-hello-world.
                         </p>
                         <p>
-                            Beyond development, I write technical content that helps developers understand concepts more clearly. I enjoy breaking down backend patterns, APIs, and system design into practical, easy-to-follow explanations. Writing, for me, is a natural extension of development — a way to make complex ideas more accessible.
-                        </p>
-                        <p>
-                            I believe good software is not only functional but also understandable.
+                            Writing, for me, is the final and most important step of the software development lifecycle. I believe good software is not only functional, but expertly explained.
                         </p>
                     </div>
                 </motion.section>
@@ -83,9 +80,9 @@ const About: React.FC = () => {
                                 <code>
                                     <span className="var">01</span> &#123;{'\n'}
                                     <span className="var">02</span>   <span className="str">"name"</span>: <span className="str">"Nafisat Damisa"</span>,{'\n'}
-                                    <span className="var">03</span>   <span className="str">"location"</span>: <span className="str">"Nigeria"</span>,{'\n'}
-                                    <span className="var">04</span>   <span className="str">"role"</span>: <span className="str">"Software Developer"</span>,{'\n'}
-                                    <span className="var">05</span>   <span className="str">"also"</span>: <span className="str">"Technical Writer"</span>,{'\n'}
+                                    <span className="var">03</span>   <span className="str">"location"</span>: <span className="str">"Remote"</span>,{'\n'}
+                                    <span className="var">04</span>   <span className="str">"role"</span>: <span className="str">"Technical Writer"</span>,{'\n'}
+                                    <span className="var">05</span>   <span className="str">"also"</span>: <span className="str">"Backend Engineer"</span>,{'\n'}
                                     <span className="var">06</span>   <span className="str">"focus"</span>: [<span className="str">"Backend Systems"</span>, <span className="str">"APIs"</span>, <span className="str">"Documentation"</span>],{'\n'}
                                     <span className="var">07</span>   <span className="str">"stack"</span>: [<span className="str">"JavaScript"</span>, <span className="str">"TypeScript"</span>, <span className="str">"Node.js"</span>, <span className="str">"SQL"</span>]{'\n'}
                                     <span className="var">08</span> &#125;
@@ -139,14 +136,14 @@ const About: React.FC = () => {
                     <div className="timeline">
                         <div className="timeline-item">
                             <span className="timeline-date">2025 — PRESENT</span>
-                            <h4>Backend Developer @ Miniemoney</h4>
-                            <p>Designing and developing backend services for a fintech startup, including notification systems, user workflows, and third-party API integrations.</p>
+                            <h4>Backend Developer & Technical Writer @ Miniemoney</h4>
+                            <p>Spearheading backend architecture and technical documentation. I actively build scalable REST APIs while simultaneously authoring the documentation used by our frontend team and enterprise partners (like Wakanow and Venco). This dual role reduced partner integration time by over 40% and accelerated internal frontend feature delivery by 25%.</p>
                         </div>
 
                         <div className="timeline-item">
                             <span className="timeline-date">2024 — 2025</span>
-                            <h4>Backend Support / Developer @ Finclusion</h4>
-                            <p>Worked across multiple backend systems including financial workflows, incident reporting, and database-driven applications using NestJS, TypeORM, and PostgreSQL.</p>
+                            <h4>Backend Support & Developer @ Finclusion</h4>
+                            <p>Managed and optimized critical backend systems utilizing NestJS and PostgreSQL. Authored internal technical documentation and runbooks to streamline developer workflows, directly contributing to resolving critical incidents 35% faster and reducing overall support resolution times.</p>
                         </div>
 
                         <div className="timeline-item">

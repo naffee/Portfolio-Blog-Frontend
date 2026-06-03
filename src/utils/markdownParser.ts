@@ -41,7 +41,7 @@ export function parseMarkdown(rawContent: string): ParsedMarkdown {
                 title: 'Untitled',
                 date: new Date().toISOString()
             },
-            html: rawContent
+            html: marked.parse(rawContent) as string
         };
     }
 

@@ -44,30 +44,22 @@ const Hero: React.FC = () => {
                     animate="visible"
                 >
                     <motion.h1 variants={itemVariants}>
-                        Software Developer <br />
-                        <span className="highlight">& Technical Writer</span>
+                        Technical Writer <br />
+                        <span className="highlight">& Backend Engineer</span>
                     </motion.h1>
                     <motion.p className="hero-subtext" variants={itemVariants}>
-                        I build reliable software systems and write clear technical documentation that helps teams create better products.
+                        I write crystal-clear, developer-focused documentation, backed by real-world experience building scalable backend systems.
                     </motion.p>
                     <motion.div className="hero-buttons" variants={itemVariants}>
                         <Link to="/portfolio" className="btn-primary">
                             View Projects <ArrowRight size={16} />
                         </Link>
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            to="/resume"
                             className="btn-secondary"
-                            onClick={(e) => {
-                                if (e.currentTarget.getAttribute('href') === '#') {
-                                    e.preventDefault();
-                                    alert("Resume link coming soon!");
-                                }
-                            }}
                         >
-                            Download Resume
-                        </a>
+                            View Resume
+                        </Link>
                     </motion.div>
                 </motion.div>
 

@@ -10,15 +10,42 @@ const Contact: React.FC = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        subject: 'Technical Writing Project',
+        subject: 'API Documentation',
         message: ''
     });
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log('Form submitted:', formData);
-        alert('Message sent! (Simulation)');
+        setStatus('submitting');
+        
+        try {
+            const response = await fetch('https://formspree.io/f/maqzyovz', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                setStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: 'API Documentation',
+                    message: ''
+                });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 3000);
+            }
+        } catch (error) {
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 3000);
+        }
     };
 
     return (
@@ -56,11 +83,9 @@ const Contact: React.FC = () => {
                                 <div className="method-details">
                                     <span className="method-label">SOCIALS</span>
                                     <div className="social-links-row">
+                                        <a href="https://github.com/naffee" target="_blank" rel="noopener noreferrer" className="method-link">GitHub</a>
+                                        <span className="separator">/</span>
                                         <a href="https://www.linkedin.com/in/nafisat-adeyemi-572236162?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="method-link">LinkedIn</a>
-                                        <span className="separator">/</span>
-                                        <a href="https://x.com/thetechwriter_" target="_blank" rel="noopener noreferrer" className="method-link">X (Twitter)</a>
-                                        <span className="separator">/</span>
-                                        <a href="https://www.instagram.com/thetechwriter_/" target="_blank" rel="noopener noreferrer" className="method-link">Instagram</a>
                                     </div>
                                 </div>
                             </div>
@@ -112,8 +137,9 @@ const Contact: React.FC = () => {
                                         value={formData.subject}
                                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                     >
-                                        <option>Technical Writing Project</option>
-                                        <option>Software Development</option>
+                                        <option>API Documentation</option>
+                                        <option>Developer Experience (DevEx)</option>
+                                        <option>Backend Engineering</option>
                                         <option>Speaking Inquiry</option>
                                         <option>Other</option>
                                     </select>
@@ -132,8 +158,11 @@ const Contact: React.FC = () => {
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className="submit-btn">
-                                Send Message <Send size={16} />
+                            <button type="submit" className={`submit-btn ${status}`} disabled={status === 'submitting'}>
+                                {status === 'submitting' ? 'Sending...' : 
+                                 status === 'success' ? 'Message Sent! ✓' : 
+                                 status === 'error' ? 'Error Sending (Try Again)' : 
+                                 <React.Fragment>Send Message <Send size={16} /></React.Fragment>}
                             </button>
 
                             <p className="form-note">I typically respond within 24-48 business hours.</p>
@@ -150,7 +179,7 @@ const Contact: React.FC = () => {
                 >
                     <div className="banner-visual"></div>
                     <div className="location-pill">
-                        <span className="dot"></span> BASED IN REMOTE / NIGERIA
+                        <span className="dot"></span> BASED REMOTELY
                     </div>
                 </motion.div>
 

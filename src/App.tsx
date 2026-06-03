@@ -10,6 +10,7 @@ import BlogPost from './pages/Blog/BlogPost';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import NotFound from './pages/NotFound/NotFound';
+import Resume from './pages/Resume/Resume';
 import './App.css';
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <AnimatePresence mode='wait'>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/resume" element={<Resume />} />
               <Route path="/portfolio" element={<Projects />} />
               <Route path="/portfolio/:slug" element={<ProjectPost />} />
               <Route path="/blog" element={<Blog />} />

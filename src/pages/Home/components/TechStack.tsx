@@ -1,15 +1,15 @@
 import React from 'react';
-import { Terminal, Database, Server, Layout, FileCode } from 'lucide-react';
+import { Terminal, Database, Server, FileText, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './TechStack.css';
 
 const TechStack: React.FC = () => {
     const stack = [
-        { icon: <FileCode size={24} />, name: 'TypeScript', desc: 'Type Safety, Interfaces' },
-        { icon: <Layout size={24} />, name: 'React', desc: 'Hooks, Context, Redux' },
-        { icon: <Server size={24} />, name: 'Node.js', desc: 'Express, NestJS, APIs' },
-        { icon: <Terminal size={24} />, name: 'Python', desc: 'FastAPI, scripting' },
-        { icon: <Database size={24} />, name: 'PostgreSQL', desc: 'Complex queries, schema design' },
+        { icon: <FileText size={24} />, name: 'Markdown & MDX', desc: 'Technical Writing, Formatting' },
+        { icon: <BookOpen size={24} />, name: 'OpenAPI / Swagger', desc: 'API Reference Specifications' },
+        { icon: <Server size={24} />, name: 'Node.js & TS', desc: 'Backend Architecture, REST APIs' },
+        { icon: <Terminal size={24} />, name: 'Python & Go', desc: 'Scripting, Fast APIs, CLIs' },
+        { icon: <Database size={24} />, name: 'PostgreSQL', desc: 'Data Modeling, Schemas' },
     ];
 
     return (

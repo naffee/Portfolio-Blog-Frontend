@@ -1,0 +1,174 @@
+.resume-page-container {
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resume-controls {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.action-buttons button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    font-size: 0.95rem;
+}
+
+.action-buttons .btn-primary {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+}
+
+.action-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* Document Styling (Web View) */
+.resume-document {
+    background-color: white;
+    color: #1a1a1a;
+    width: 100%;
+    max-width: 850px;
+    padding: 60px 80px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.resume-content {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.resume-content a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.resume-content a:hover {
+    text-decoration: underline;
+}
+
+.resume-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    color: #111;
+}
+
+.resume-content p {
+    margin-bottom: 1em;
+}
+
+.resume-content strong {
+    color: #000;
+    font-weight: 600;
+}
+
+.resume-content h2 {
+    font-size: 1.4rem;
+    color: var(--accent-blue);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.resume-content h3 {
+    font-size: 1.2rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #222;
+}
+
+.resume-content ul {
+    margin-bottom: 1.5em;
+    padding-left: 20px;
+}
+
+.resume-content li {
+    margin-bottom: 0.5em;
+}
+
+.resume-content hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 2em 0;
+}
+
+/* Print CSS */
+@media print {
+    body {
+        background-color: white !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .resume-page-container {
+        padding: 0;
+        background-color: white;
+    }
+
+    .resume-document {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Adjust sizing for print */
+    @page {
+        margin: 0.5in;
+    }
+
+    .resume-content {
+        font-size: 11pt;
+    }
+
+    .resume-content h1 {
+        font-size: 24pt;
+    }
+
+    .resume-content h2 {
+        font-size: 14pt;
+        margin-top: 1em;
+    }
+
+    .resume-content h3 {
+        font-size: 12pt;
+    }
+}

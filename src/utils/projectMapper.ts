@@ -24,23 +24,7 @@ export const mapPostToProject = (post: WPPost): Project => {
             { label: 'View Project', url: `/portfolio/${post.slug}`, icon: 'arrow' }
         ];
 
-        // DEMO LOGIC: If title contains "API" or "Gateway", add a GitHub link
-        if (post.title.rendered.toLowerCase().includes('api') || post.title.rendered.toLowerCase().includes('gateway')) {
-            links.push({
-                label: 'GitHub',
-                url: 'https://github.com/naffee',
-                icon: 'github'
-            });
-        }
 
-        // DEMO LOGIC: If title contains "Processor" or "Real-time", add a Demo link
-        if (post.title.rendered.toLowerCase().includes('processor') || post.title.rendered.toLowerCase().includes('real-time')) {
-            links.push({
-                label: 'Live Demo',
-                url: '#', // TODO: Map to actual demo URL from CMS
-                icon: 'external'
-            });
-        }
     }
 
     const isFeatured = (post as any).customFeatured || false;

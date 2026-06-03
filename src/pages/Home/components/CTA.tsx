@@ -10,8 +10,8 @@ const CTA: React.FC = () => {
                 <div className="cta-card">
                     <h2>Ready to build something <br />exceptional together?</h2>
                     <p>
-                        Whether you need a robust backend architecture, scalable APIs,
-                        or technical documentation that empowers your developers, I'm here to help.
+                        Whether you need best-in-class API documentation, onboarding tutorials,
+                        or a technical writer who can actually read the source code, I'm here to help.
                     </p>
                     <div className="cta-buttons">
                         <Link to="/contact" className="btn-white">
